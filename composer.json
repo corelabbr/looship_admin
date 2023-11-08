@@ -1,0 +1,11 @@
+{
+  "name" : "looship/admin",
+  "type" : "project",
+  "description" : "Módulo de clube de frete para Magento",
+  "require" : {
+    "php" : ">=5.4",
+  },
+  "config" : {
+    "bin-dir" : "bin"
+  }
+}

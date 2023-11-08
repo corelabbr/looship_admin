@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <controller_action_predispatch>
+        <observers>
+            <looship_admin>
+                <type>singleton</type>
+                <class>looship_admin/observer</class>
+                <method>captureLooid</method>
+            </looship_admin>
+        </observers>
+    </controller_action_predispatch>
+</layout>
