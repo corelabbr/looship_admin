@@ -26,7 +26,7 @@ releases](https://github.com/corelabbr/looship_admin/releases) e seguir os segui
 
     $ cd /path/to/magento
     $ modgit init
-    $ modgit add pedro-teixeira-correios https://github.com/corelabbr/looship_admin
+    $ modgit add looship_admin https://github.com/corelabbr/looship_admin
 
 
 ## Configurando o módulo
@@ -79,7 +79,7 @@ Você também pode apagar todo o conteúdo da pasta "var/cache" para atualizar s
 Flat Table é uma funcionalidade do Magento que agrupa todos os atributos de produtos em uma tabela só, por padrão 
 ela vem desativada, mas você ou seu desenvolvedor pode ativá-la para aumentar o desempenho da loja.
 
-O módulo pedroteixeira-correios inclui os campos de volume no cadastro do produto, e quando você utiliza a Flat 
+O módulo looship_admin inclui os campos de taxonomia no cadastro do produto, e quando você utiliza a Flat 
 Table é necessário atualizá-la para aplicar esses campos:
 
 - Acesse a administração de sua loja
