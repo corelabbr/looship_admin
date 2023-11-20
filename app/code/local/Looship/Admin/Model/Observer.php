@@ -6,35 +6,30 @@ class Looship_Admin_Model_Observer
         $isEnabled = Mage::getStoreConfig('shipping/looship_admin/enabled');
         if (!$isEnabled) return;
         $request = $observer->getEvent()->getControllerAction()->getRequest();
-        $looid = $request->getParam('looid');
-        if (!$looid || $looid == '') return;
-
-        $reference = Mage::app()->getRequest()->getHeader('referer') || Mage::app()->getRequest()->getServer('HTTP_REFERER');
-        $media = array(
-            "reference"    => $reference,
-            "utm_source"   => $request->getParam('utm_source'),
-            "utm_campaign" => $request->getParam('utm_campaign'),
-            "utm_medium"   => $request->getParam('utm_medium'),
-        );
-        Mage::getSingleton('core/session')->setLooId($looid);
-        Mage::getSingleton('core/session')->setLooMedia($media);
+        Mage::helper('looship_admin')->setLooData($request);
     }
 
     public function orderConfirmed(Varien_Event_Observer $observer)
     {
         $order = $observer->getEvent()->getOrder();
-        if ($order->getStatus() == Mage_Sales_Model_Order::STATE_COMPLETE) return;
+        $order_status = Mage::getStoreConfig('shipping/looship_admin/order_status');
+        if ($order->getStatus() == $order_status) return;
         
         $isEnabled = Mage::getStoreConfig('shipping/looship_admin/enabled');
         if (!$isEnabled) return;
 
-        $orderNumber = $order->getIncrementId();
-        $job_id = Mage::getSingleton('core/session')->getLooJobid();
-        $url = Mage::helper('looship_admin')->getHost() . '/v3/order/' . $orderNumber . '/confirmed';
+        $external_id = $order->getIncrementId();
+        $loo_job_id = Mage::getSingleton('core/session')->getLooJobId();
+        $url = Mage::helper('looship_admin')->getHost() . '/v3/order/' . $loo_job_id . '/confirmed';
         $postData = array(
-            "job_id" => $job_id,
-        );                
-        $newData = Mage::helper('looship_admin')->postRequest($url, $postData);                
+            "external_id" => $external_id,
+        );
+        $newData = Mage::helper('looship_admin')->postRequest($url, $postData);
+        if (isset($newData) && $newData['valid'] == true)
+        {
+            Mage::getSingleton('core/session')->unsLooJobId();
+            Mage::getSingleton('core/session')->unsLooId();
+        }
     }
 
     public function shippingQuote(Varien_Event_Observer $observer)
@@ -83,7 +78,7 @@ class Looship_Admin_Model_Observer
             $newFreights = $newData['freights'];
             if (isset($newFreights) && is_array($newFreights))
             {
-                Mage::getSingleton('core/session')->setLooJobid($newData['job_id']);
+                Mage::getSingleton('core/session')->setLooJobId($newData['job_id']);
                 foreach ($shippingAddress->getShippingRatesCollection() as $shippingRate) 
                 {
                     $targetShippingRateLabel = $shippingRate->getCode(); 

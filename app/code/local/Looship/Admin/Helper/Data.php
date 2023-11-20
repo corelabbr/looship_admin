@@ -11,17 +11,29 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getSingleton('core/session')->getLooId();
     }
 
+    public function setLooData($request)
+    {
+        $looid = $request->getParam('looid');
+        if (!$looid || $looid == '') return;
+
+        $reference = Mage::helper('core/url')->getCurrentUrl(true);
+        $media = array(
+            "reference"    => $reference,
+            "utm_source"   => $request->getParam('utm_source', "none"),
+            "utm_campaign" => $request->getParam('utm_campaign', "none"),
+            "utm_medium"   => $request->getParam('utm_medium', "site"),
+        );
+
+        $jsonData = json_encode($media);
+        Mage::log($looid, null, 'looship_debug.log');
+        Mage::log($jsonData, null, 'looship_debug.log');
+        Mage::getSingleton('core/session')->setLooMedia($media);
+        Mage::getSingleton('core/session')->setLooId($looid);
+    }
+
     public function getLooMedia()
     {
         $media = Mage::getSingleton('core/session')->getLooMedia();
-        if (!$media) {
-            return array(
-                "reference"    => Mage::app()->getRequest()->getServer('HTTP_REFERER'),
-                "utm_source"   => "none",
-                "utm_campaign" => "none",
-                "utm_medium"   => "site"
-            );
-        }
         return $media;
     }
 
@@ -95,8 +107,11 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
 
                 Mage::log($response, null, 'looship_debug.log');
                 $responseData = json_decode($response, true);
-                $newData = $responseData['data'];
-                return $newData;
+                if (isset($responseData))
+                {
+                    $newData = $responseData['data'];
+                    return $newData;
+                }
             }
             return [];
         } catch (Exception $e) {
