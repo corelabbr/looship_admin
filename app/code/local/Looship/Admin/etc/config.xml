@@ -28,34 +28,27 @@
             
             <sales_quote_collect_totals_after>
                 <observers>
-                    <looship_admin>
+                    <looship_admin_shipping_quote>
                         <type>singleton</type>
                         <class>looship_admin/observer</class>
-                        <method>quoteShipping</method>
-                    </looship_admin>
+                        <method>shippingQuote</method>
+                    </looship_admin_shipping_quote>
                 </observers>
+            
             </sales_quote_collect_totals_after>
-<!--
-            <sales_quote_address_collect_totals_after>
-                <observers>
-                    <looship_admin>
-                        <type>singleton</type>
-                        <class>looship_admin/observer</class>
-                        <method>quoteShipping</method>
-                    </looship_admin>
-                </observers>
-            </sales_quote_address_collect_totals_after>
 
-            <payment_method_is_active>
+            <sales_order_save_after>
                 <observers>
-                    <looship_admin>
+                    <looship_admin_order_confirmed>
                         <type>singleton</type>
                         <class>looship_admin/observer</class>
-                        <method>quoteShipping</method>
-                    </looship_admin>
+                        <method>orderConfirmed</method>
+                    </looship_admin_order_confirmed>
+                    <args>
+                        <after>looship_admin/shippingQuote</after>
+                    </args>
                 </observers>
-            </payment_method_is_active>
--->
+            </sales_order_save_after>
         </events>
     </frontend>
     <admin>
