@@ -14,7 +14,7 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
     public function setLooData($request)
     {
         $looid = $request->getParam('looid');
-        if (!$looid || $looid == '') return;
+        if (!isset($looid) || $looid == '') return;
 
         $reference = Mage::helper('core/url')->getCurrentUrl(true);
         $media = array(
@@ -27,6 +27,7 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
         $jsonData = json_encode($media);
         Mage::log($looid, null, 'looship_debug.log');
         Mage::log($jsonData, null, 'looship_debug.log');
+        
         Mage::getSingleton('core/session')->setLooMedia($media);
         Mage::getSingleton('core/session')->setLooId($looid);
     }

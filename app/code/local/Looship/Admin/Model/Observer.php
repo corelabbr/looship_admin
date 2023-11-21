@@ -37,7 +37,7 @@ class Looship_Admin_Model_Observer
         $isEnabled = Mage::getStoreConfig('shipping/looship_admin/enabled');
         if (!$isEnabled) return; 
         $voucher = Mage::helper('looship_admin')->getLooId();
-        if ($voucher == '') return;
+        if (!isset($voucher) || $voucher == '') return;
 
         $store = Mage::app()->getStore();
         $shippingOrigin = $store->getConfig('shipping/origin/postcode');
