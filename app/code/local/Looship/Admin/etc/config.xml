@@ -33,9 +33,18 @@
                         <class>looship_admin/observer</class>
                         <method>shippingQuote</method>
                     </looship_admin_shipping_quote>
-                </observers>
-            
+                </observers>            
             </sales_quote_collect_totals_after>
+            
+            <sales_quote_address_collect_totals_after>
+                <observers>
+                    <looship_admin>
+                        <type>singleton</type>
+                        <class>looship_admin/observer</class>
+                        <method>shippingQuote</method>
+                    </looship_admin>
+                </observers>
+            </sales_quote_address_collect_totals_after>
 
             <sales_order_save_after>
                 <observers>
