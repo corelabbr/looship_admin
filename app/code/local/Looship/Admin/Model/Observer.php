@@ -19,7 +19,9 @@ class Looship_Admin_Model_Observer
         if (!$isEnabled) return;
 
         $external_id = $order->getIncrementId();
-        $loo_job_id = Mage::getSingleton('core/session')->getLooJobId();
+        $loo_job_id = Mage::getSingleton('core/session')->getLoojobid();
+        if (!isset($loo_job_id)) return;
+        
         $url = Mage::helper('looship_admin')->getHost() . '/v3/order/' . $loo_job_id . '/confirmed';
         $postData = array(
             "external_id" => $external_id,
@@ -78,7 +80,7 @@ class Looship_Admin_Model_Observer
             $newFreights = $newData['freights'];
             if (isset($newFreights) && is_array($newFreights))
             {
-                Mage::getSingleton('core/session')->setLooJobId($newData['job_id']);
+                Mage::getSingleton('core/session')->setLoojobid($newData['job_id']);
                 foreach ($shippingAddress->getShippingRatesCollection() as $shippingRate) 
                 {
                     $targetShippingRateLabel = $shippingRate->getCode(); 
