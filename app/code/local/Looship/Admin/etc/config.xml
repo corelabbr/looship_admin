@@ -53,9 +53,6 @@
                         <class>looship_admin/observer</class>
                         <method>orderConfirmed</method>
                     </looship_admin_order_confirmed>
-                    <args>
-                        <after>looship_admin/shippingQuote</after>
-                    </args>
                 </observers>
             </sales_order_save_after>
         </events>
