@@ -46,6 +46,16 @@
                 </observers>
             </sales_quote_address_collect_totals_before>
 
+            <payment_method_is_active>
+                <observers>
+                    <looship_admin_payment_method_is_active>
+                        <type>singleton</type>
+                        <class>looship_admin/observer</class>
+                        <method>shippingQuote</method>
+                    </looship_admin_payment_method_is_active>
+                </observers>
+            </payment_method_is_active>
+
             <sales_order_save_after>
                 <observers>
                     <looship_admin_order_confirmed>
