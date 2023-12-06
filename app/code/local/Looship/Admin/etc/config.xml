@@ -36,7 +36,6 @@
                 </observers>            
             </sales_quote_collect_totals_before>
             
-            <!--
             <sales_quote_address_collect_totals_before>
                 <observers>
                     <looship_admin_sales_quote_address_collect_totals_before>
@@ -46,7 +45,6 @@
                     </looship_admin_sales_quote_address_collect_totals_before>
                 </observers>
             </sales_quote_address_collect_totals_before>
-            -->
 
             <sales_order_save_after>
                 <observers>
