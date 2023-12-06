@@ -7,7 +7,7 @@ class Looship_Admin_IndexController extends Mage_Core_Controller_Front_Action
         if (!$isEnabled) return;
         $looid = $this->getRequest()->getParam('looid');
         if (!isset($looid) || $looid == '') return;
-        Mage::getSingleton('core/session')->setLooId($looid);
+        Mage::getSingleton('core/session')->setLooid($looid);
     }
 }
 ?>

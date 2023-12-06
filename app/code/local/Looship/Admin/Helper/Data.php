@@ -8,7 +8,7 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getLooId()
     {
-        return Mage::getSingleton('core/session')->getLooId();
+        return Mage::getSingleton('core/session')->getLooid();
     }
 
     public function setLooData($request)
@@ -28,13 +28,13 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
         Mage::log($looid, null, 'looship_debug.txt');
         Mage::log($jsonData, null, 'looship_debug.txt');
         
-        Mage::getSingleton('core/session')->setLooMedia($media);
-        Mage::getSingleton('core/session')->setLooId($looid);
+        Mage::getSingleton('core/session')->setLoomedia($media);
+        Mage::getSingleton('core/session')->setLooid($looid);
     }
 
     public function getLooMedia()
     {
-        $media = Mage::getSingleton('core/session')->getLooMedia();
+        $media = Mage::getSingleton('core/session')->getLoomedia();
         return $media;
     }
 

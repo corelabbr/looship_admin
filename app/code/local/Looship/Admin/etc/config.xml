@@ -26,25 +26,27 @@
                 </observers>
             </controller_action_predispatch>
             
-            <sales_quote_collect_totals_after>
+            <sales_quote_collect_totals_before>
                 <observers>
-                    <looship_admin_sales_quote_collect_totals_after>
+                    <looship_admin_sales_quote_collect_totals_before>
                         <type>singleton</type>
                         <class>looship_admin/observer</class>
                         <method>shippingQuote</method>
-                    </looship_admin_sales_quote_collect_totals_after>
+                    </looship_admin_sales_quote_collect_totals_before>
                 </observers>            
-            </sales_quote_collect_totals_after>
+            </sales_quote_collect_totals_before>
             
-            <sales_quote_address_collect_totals_after>
+            <!--
+            <sales_quote_address_collect_totals_before>
                 <observers>
-                    <looship_admin_sales_quote_address_collect_totals_after>
+                    <looship_admin_sales_quote_address_collect_totals_before>
                         <type>singleton</type>
                         <class>looship_admin/observer</class>
                         <method>shippingQuote</method>
-                    </looship_admin_sales_quote_address_collect_totals_after>
+                    </looship_admin_sales_quote_address_collect_totals_before>
                 </observers>
-            </sales_quote_address_collect_totals_after>
+            </sales_quote_address_collect_totals_before>
+            -->
 
             <sales_order_save_after>
                 <observers>
