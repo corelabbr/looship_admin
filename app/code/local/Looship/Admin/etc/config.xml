@@ -35,6 +35,16 @@
                     </looship_admin_sales_quote_collect_totals_before>
                 </observers>            
             </sales_quote_collect_totals_before>
+
+            <sales_quote_collect_totals_after>
+                <observers>
+                    <looship_admin_sales_quote_collect_totals_after>
+                        <type>singleton</type>
+                        <class>looship_admin/observer</class>
+                        <method>shippingQuote</method>
+                    </looship_admin_sales_quote_collect_totals_after>
+                </observers>            
+            </sales_quote_collect_totals_after>
             
             <sales_quote_address_collect_totals_before>
                 <observers>
