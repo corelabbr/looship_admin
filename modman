@@ -1,4 +1,4 @@
 # app/code
-app/code/local/Looship/Admin            app/code/community/Looship/Admin
+app/code/local/Meu Prime/Admin            app/code/community/Meu Prime/Admin
 # app/etc
-app/etc/modules/Looship_Admin.xml            app/etc/modules/Looship_Admin.xml
+app/etc/modules/MeuPrime_Admin.xml            app/etc/modules/MeuPrime_Admin.xml

@@ -3,8 +3,8 @@
     <sections>
         <shipping>
             <groups>
-                <looship_admin translate="label" module="looship_admin">
-                    <label>Looship</label>
+                <meuprime_admin translate="label" module="meuprime_admin">
+                    <label>Meu Prime</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
@@ -38,7 +38,7 @@
                             <show_in_store>1</show_in_store>
                         </order_status>
                     </fields>
-                </looship_admin>
+                </meuprime_admin>
             </groups>
         </shipping>
     </sections>

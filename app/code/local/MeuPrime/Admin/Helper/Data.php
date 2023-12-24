@@ -1,5 +1,5 @@
 <?php
-class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
+class MeuPrime_Admin_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public function getHost()
     {
@@ -25,8 +25,8 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
         );
 
         $jsonData = json_encode($media);
-        Mage::log($looid, null, 'looship_debug.txt');
-        Mage::log($jsonData, null, 'looship_debug.txt');
+        Mage::log($looid, null, 'meuprime_debug.txt');
+        Mage::log($jsonData, null, 'meuprime_debug.txt');
         
         Mage::getSingleton('core/session')->setLoomedia($media);
         Mage::getSingleton('core/session')->setLooid($looid);
@@ -84,11 +84,11 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
     {
         try 
         {
-            $token = Mage::getStoreConfig('shipping/looship_admin/token');
+            $token = Mage::getStoreConfig('shipping/meuprime_admin/token');
             if ($token !== '')
             {
                 $jsonData = json_encode($postData);
-                Mage::log($jsonData, null, 'looship_debug.txt');
+                Mage::log($jsonData, null, 'meuprime_debug.txt');
                 $headers = array(
                     'Content-Type: application/json',
                     'Content-Length: ' . strlen($jsonData),
@@ -106,7 +106,7 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
                 if ($curl_error) throw new Exception($curl_error);
                 curl_close($ch);
 
-                Mage::log($response, null, 'looship_debug.txt');
+                Mage::log($response, null, 'meuprime_debug.txt');
                 $responseData = json_decode($response, true);
                 if (isset($responseData))
                 {
@@ -116,7 +116,7 @@ class Looship_Admin_Helper_Data extends Mage_Core_Helper_Abstract
             }
             return [];
         } catch (Exception $e) {
-            Mage::log(json_encode($e->getMessage()), null, 'looship_request.txt');
+            Mage::log(json_encode($e->getMessage()), null, 'meuprime_request.txt');
         }
     }
 }

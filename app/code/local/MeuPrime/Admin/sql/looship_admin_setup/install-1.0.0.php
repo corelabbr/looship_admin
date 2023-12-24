@@ -4,10 +4,10 @@
  * This source file is subject to the MIT License.
  * It is also available through http://opensource.org/licenses/MIT
  *
- * @category  Looship
- * @package   Looship_Admin
- * @author    Looship <contato@looship.com.br>
- * @copyright 2023 Looship (http://looship.com.br)
+ * @category  Meu Prime
+ * @package   MeuPrime_Admin
+ * @author    Meu Prime <contato@looship.com.br>
+ * @copyright 2023 Meu Prime (http://looship.com.br)
  * @license   http://opensource.org/licenses/MIT MIT
  */
 

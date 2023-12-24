@@ -1,4 +1,4 @@
-# Looship_Admin
+# MeuPrime_Admin
 
 > Módulo de clube de frete para Magento
 
@@ -45,10 +45,10 @@ Para acessar a configuração do módulo:
 - No menu superior vá em "Sistema > Configuração"
 - No menu esquerdo vá em "Métodos de Envio"
 
-Na aba "Looship" você tem todos os campos de configuração do módulo, os mais importantes são:
+Na aba "Meu Prime" você tem todos os campos de configuração do módulo, os mais importantes são:
 
 - **Habilitar** - Para "ligar" ou "desligar" o módulo
-- **Token** - Token de registro do lojista na plataforma Looship.
+- **Token** - Token de registro do lojista na plataforma Meu Prime.
 
 ## Suporte
 
@@ -116,4 +116,4 @@ find ./app -name "*.php" -exec php -l {} \;
 
 ## Licença
 
-[MIT](https://github.com/corelabbr/looship_admin/blob/master/LICENSE) © [Looship](https://developers.looship.com.br).
+[MIT](https://github.com/corelabbr/looship_admin/blob/master/LICENSE) © [Meu Prime](https://developers.looship.com.br).

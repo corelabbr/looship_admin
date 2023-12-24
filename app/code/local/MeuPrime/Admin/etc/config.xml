@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Looship_Admin>
+        <MeuPrime_Admin>
             <version>1.0.0</version>
-        </Looship_Admin>
+        </MeuPrime_Admin>
     </modules>
     <frontend>
         <routers>
             <standard>
                 <use>standard</use>
                 <args>
-                    <module>Looship_Admin</module>
+                    <module>MeuPrime_Admin</module>
                     <frontName>looship</frontName>
                 </args>
             </standard>
@@ -18,61 +18,61 @@
         <events>
             <controller_action_predispatch>
                 <observers>
-                    <looship_admin_capture_looid>
+                    <meuprime_admin_capture_looid>
                         <type>singleton</type>
-                        <class>looship_admin/observer</class>
+                        <class>meuprime_admin/observer</class>
                         <method>captureLooid</method>
-                    </looship_admin_capture_looid>
+                    </meuprime_admin_capture_looid>
                 </observers>
             </controller_action_predispatch>
             
             <sales_quote_collect_totals_before>
                 <observers>
-                    <looship_admin_sales_quote_collect_totals_before>
+                    <meuprime_admin_sales_quote_collect_totals_before>
                         <type>singleton</type>
-                        <class>looship_admin/observer</class>
+                        <class>meuprime_admin/observer</class>
                         <method>shippingQuote</method>
-                    </looship_admin_sales_quote_collect_totals_before>
+                    </meuprime_admin_sales_quote_collect_totals_before>
                 </observers>            
             </sales_quote_collect_totals_before>
 
             <sales_quote_collect_totals_after>
                 <observers>
-                    <looship_admin_sales_quote_collect_totals_after>
+                    <meuprime_admin_sales_quote_collect_totals_after>
                         <type>singleton</type>
-                        <class>looship_admin/observer</class>
+                        <class>meuprime_admin/observer</class>
                         <method>shippingQuote</method>
-                    </looship_admin_sales_quote_collect_totals_after>
+                    </meuprime_admin_sales_quote_collect_totals_after>
                 </observers>            
             </sales_quote_collect_totals_after>
             
             <sales_quote_address_collect_totals_before>
                 <observers>
-                    <looship_admin_sales_quote_address_collect_totals_before>
+                    <meuprime_admin_sales_quote_address_collect_totals_before>
                         <type>singleton</type>
-                        <class>looship_admin/observer</class>
+                        <class>meuprime_admin/observer</class>
                         <method>shippingQuote</method>
-                    </looship_admin_sales_quote_address_collect_totals_before>
+                    </meuprime_admin_sales_quote_address_collect_totals_before>
                 </observers>
             </sales_quote_address_collect_totals_before>
 
             <payment_method_is_active>
                 <observers>
-                    <looship_admin_payment_method_is_active>
+                    <meuprime_admin_payment_method_is_active>
                         <type>singleton</type>
-                        <class>looship_admin/observer</class>
+                        <class>meuprime_admin/observer</class>
                         <method>shippingQuote</method>
-                    </looship_admin_payment_method_is_active>
+                    </meuprime_admin_payment_method_is_active>
                 </observers>
             </payment_method_is_active>
 
             <sales_order_save_after>
                 <observers>
-                    <looship_admin_order_confirmed>
+                    <meuprime_admin_order_confirmed>
                         <type>singleton</type>
-                        <class>looship_admin/observer</class>
+                        <class>meuprime_admin/observer</class>
                         <method>orderConfirmed</method>
-                    </looship_admin_order_confirmed>
+                    </meuprime_admin_order_confirmed>
                 </observers>
             </sales_order_save_after>
         </events>
@@ -82,7 +82,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Looship_Admin before="Mage_Adminhtml">Looship_Admin_Adminhtml</Looship_Admin>
+                        <MeuPrime_Admin before="Mage_Adminhtml">MeuPrime_Admin_Adminhtml</MeuPrime_Admin>
                     </modules>
                 </args>
             </adminhtml>
@@ -90,37 +90,37 @@
     </admin>
     <global>
         <resources>
-            <looship_admin_setup>
+            <meuprime_admin_setup>
                 <setup>
-                    <module>Looship_Admin</module>
+                    <module>MeuPrime_Admin</module>
                 </setup>
                 <connection>
                     <use>directory_setup</use>
                 </connection>
-            </looship_admin_setup>
+            </meuprime_admin_setup>
         </resources>
         <helpers>
-            <looship_admin>
-                <class>Looship_Admin_Helper</class>
-            </looship_admin>
+            <meuprime_admin>
+                <class>MeuPrime_Admin_Helper</class>
+            </meuprime_admin>
         </helpers>
         <models>
-            <looship_admin>
-                <class>Looship_Admin_Model</class>
-            </looship_admin>
+            <meuprime_admin>
+                <class>MeuPrime_Admin_Model</class>
+            </meuprime_admin>
         </models>
         <blocks>
-            <looship_admin>
-                <class>Looship_Admin_Block</class>
-            </looship_admin>
+            <meuprime_admin>
+                <class>MeuPrime_Admin_Block</class>
+            </meuprime_admin>
         </blocks>
     </global>
 
     <default>
         <shipping>
-            <looship_admin>
+            <meuprime_admin>
                 <enabled>0</enabled>
-            </looship_admin>
+            </meuprime_admin>
         </shipping>
     </default>
 </config>

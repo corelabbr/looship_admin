@@ -1,32 +1,32 @@
 <?php
-class Looship_Admin_Model_Observer
+class MeuPrime_Admin_Model_Observer
 {
     public function captureLooid($observer)
     {
-        $isEnabled = Mage::getStoreConfig('shipping/looship_admin/enabled');
+        $isEnabled = Mage::getStoreConfig('shipping/meuprime_admin/enabled');
         if (!$isEnabled) return;
         $request = $observer->getEvent()->getControllerAction()->getRequest();
-        Mage::helper('looship_admin')->setLooData($request);
+        Mage::helper('meuprime_admin')->setLooData($request);
     }
 
     public function orderConfirmed(Varien_Event_Observer $observer)
     {
         $order = $observer->getEvent()->getOrder();
-        $order_status = Mage::getStoreConfig('shipping/looship_admin/order_status');
+        $order_status = Mage::getStoreConfig('shipping/meuprime_admin/order_status');
         if ($order->getStatus() == $order_status) return;
         
-        $isEnabled = Mage::getStoreConfig('shipping/looship_admin/enabled');
+        $isEnabled = Mage::getStoreConfig('shipping/meuprime_admin/enabled');
         if (!$isEnabled) return;
 
         $external_id = $order->getIncrementId();
         $loo_job_id = Mage::getSingleton('core/session')->getLoojobid();
         if (!isset($loo_job_id)) return;
         
-        $url = Mage::helper('looship_admin')->getHost() . '/v3/order/' . $loo_job_id . '/confirmed';
+        $url = Mage::helper('meuprime_admin')->getHost() . '/v3/order/' . $loo_job_id . '/confirmed';
         $postData = array(
             "external_id" => $external_id,
         );
-        $newData = Mage::helper('looship_admin')->postRequest($url, $postData);
+        $newData = Mage::helper('meuprime_admin')->postRequest($url, $postData);
         if (isset($newData) && $newData['valid'] == true)
         {
             Mage::getSingleton('core/session')->unsLooJobId();
@@ -36,9 +36,9 @@ class Looship_Admin_Model_Observer
 
     public function shippingQuote(Varien_Event_Observer $observer)
     {
-        $isEnabled = Mage::getStoreConfig('shipping/looship_admin/enabled');
+        $isEnabled = Mage::getStoreConfig('shipping/meuprime_admin/enabled');
         if (!$isEnabled) return; 
-        $voucher = Mage::helper('looship_admin')->getLooId();
+        $voucher = Mage::helper('meuprime_admin')->getLooId();
         if (!isset($voucher) || $voucher == '') return;
 
         $store = Mage::app()->getStore();
@@ -48,15 +48,15 @@ class Looship_Admin_Model_Observer
 
         $shippingAddress = $quote->getShippingAddress();
         $shippingRates = $shippingAddress->getAllShippingRates();
-        $freights = Mage::helper('looship_admin')->getShippingRates($shippingRates);
+        $freights = Mage::helper('meuprime_admin')->getShippingRates($shippingRates);
         if (count($freights) <= 0) return;
 
-        $items = Mage::helper('looship_admin')->getOrderItems();                        
+        $items = Mage::helper('meuprime_admin')->getOrderItems();                        
         if (count($items) <= 0) return;
     
         $checkoutSession = Mage::getSingleton('checkout/session');
         $simulate = $checkoutSession->getQuote() && $checkoutSession->getLastRealOrderId();
-        $media = Mage::helper('looship_admin')->getLooMedia();
+        $media = Mage::helper('meuprime_admin')->getLooMedia();
         $destinationZipCode = $shippingAddress->getPostcode();
 
         $postData = array(
@@ -73,8 +73,8 @@ class Looship_Admin_Model_Observer
             "freights"  => $freights,
         );
 
-        $url = Mage::helper('looship_admin')->getHost() . '/v3/voucher/validate';
-        $newData = Mage::helper('looship_admin')->postRequest($url, $postData);
+        $url = Mage::helper('meuprime_admin')->getHost() . '/v3/voucher/validate';
+        $newData = Mage::helper('meuprime_admin')->postRequest($url, $postData);
         if (isset($newData) && $newData['valid'] == true)
         {
             $newFreights = $newData['freights'];

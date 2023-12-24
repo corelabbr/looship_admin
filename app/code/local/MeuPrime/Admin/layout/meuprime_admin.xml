@@ -2,11 +2,11 @@
 <layout version="0.1.0">
     <controller_action_predispatch>
         <observers>
-            <looship_admin_capture_looid_layout>
+            <meuprime_admin_capture_looid_layout>
                 <type>singleton</type>
-                <class>looship_admin/observer</class>
+                <class>meuprime_admin/observer</class>
                 <method>captureLooid</method>
-            </looship_admin_capture_looid_layout>
+            </meuprime_admin_capture_looid_layout>
         </observers>
     </controller_action_predispatch>
 </layout>
