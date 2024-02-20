@@ -3,7 +3,7 @@ class MeuPrime_Admin_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public function getHost()
     {
-        return 'https://api.looship.com.br';
+        return 'https://api.meuprime.com';
     }
 
     public function getLooId()

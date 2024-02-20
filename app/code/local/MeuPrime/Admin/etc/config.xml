@@ -11,7 +11,7 @@
                 <use>standard</use>
                 <args>
                     <module>MeuPrime_Admin</module>
-                    <frontName>looship</frontName>
+                    <frontName>meuprime</frontName>
                 </args>
             </standard>
         </routers>

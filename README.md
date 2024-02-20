@@ -10,7 +10,7 @@
 ## Instalando manualmente
 
 Caso você prefira fazer a instalação manual, basta baixar a última versão do módulo na [página de 
-releases](https://github.com/corelabbr/looship_admin/releases) e seguir os seguintes passos:
+releases](https://github.com/corelabbr/meuprime_admin/releases) e seguir os seguintes passos:
 
 - O tarball deve ser descompactado no public_html de sua loja
 - <a href="#cache">Atualize o cache</a>
@@ -20,13 +20,13 @@ releases](https://github.com/corelabbr/looship_admin/releases) e seguir os segui
 
     $ cd /path/to/magento
     $ modman init
-    $ modman clone https://github.com/corelabbr/looship_admin
+    $ modman clone https://github.com/corelabbr/meuprime_admin
 
 ## Instalando com [modgit](https://github.com/jreinke/modgit)
 
     $ cd /path/to/magento
     $ modgit init
-    $ modgit add looship-admin https://github.com/corelabbr/looship_admin
+    $ modgit add meuprime-admin https://github.com/corelabbr/meuprime_admin
 
 
 ## Configurando o módulo
@@ -52,10 +52,10 @@ Na aba "Meu Prime" você tem todos os campos de configuração do módulo, os ma
 
 ## Suporte
 
-Por favor utilize as [issues do GitHub](https://github.com/corelabbr/looship_admin/issues) para reportar problemas 
+Por favor utilize as [issues do GitHub](https://github.com/corelabbr/meuprime_admin/issues) para reportar problemas 
 e requisitar features. Por favor verifique as issues já criadas e envie sua pull request!
 
-Para entrar em contato com o criador, vá para [https://developers.looship.com.br/](https://developers.looship.com.br/).
+Para entrar em contato com o criador, vá para [https://developers.meuprime.com/](https://developers.meuprime.com/).
 
 
 ## FAQ
@@ -79,7 +79,7 @@ Você também pode apagar todo o conteúdo da pasta "var/cache" para atualizar s
 Flat Table é uma funcionalidade do Magento que agrupa todos os atributos de produtos em uma tabela só, por padrão 
 ela vem desativada, mas você ou seu desenvolvedor pode ativá-la para aumentar o desempenho da loja.
 
-O módulo looship-admin inclui os campos de taxonomia no cadastro do produto, e quando você utiliza a Flat 
+O módulo meuprime-admin inclui os campos de taxonomia no cadastro do produto, e quando você utiliza a Flat 
 Table é necessário atualizá-la para aplicar esses campos:
 
 - Acesse a administração de sua loja
@@ -116,4 +116,4 @@ find ./app -name "*.php" -exec php -l {} \;
 
 ## Licença
 
-[MIT](https://github.com/corelabbr/looship_admin/blob/master/LICENSE) © [Meu Prime](https://developers.looship.com.br).
+[MIT](https://github.com/corelabbr/meuprime_admin/blob/master/LICENSE) © [Meu Prime](https://developers.meuprime.com).

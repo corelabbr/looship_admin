@@ -1,9 +1,9 @@
 {
-  "name" : "looship/admin",
+  "name" : "meuprime/admin",
   "type" : "project",
-  "description" : "Módulo de clube de frete para Magento",
+  "description" : "Módulo de clube de compras para Magento",
   "require" : {
-    "php" : ">=5.4",
+    "php" : ">=5.4"
   },
   "config" : {
     "bin-dir" : "bin"
