@@ -25,16 +25,6 @@
                     </meuprime_admin_capture_looid>
                 </observers>
             </controller_action_predispatch>
-            
-            <sales_quote_collect_totals_before>
-                <observers>
-                    <meuprime_admin_sales_quote_collect_totals_before>
-                        <type>singleton</type>
-                        <class>meuprime_admin/observer</class>
-                        <method>shippingQuote</method>
-                    </meuprime_admin_sales_quote_collect_totals_before>
-                </observers>            
-            </sales_quote_collect_totals_before>
 
             <sales_quote_collect_totals_after>
                 <observers>
@@ -45,26 +35,6 @@
                     </meuprime_admin_sales_quote_collect_totals_after>
                 </observers>            
             </sales_quote_collect_totals_after>
-            
-            <sales_quote_address_collect_totals_before>
-                <observers>
-                    <meuprime_admin_sales_quote_address_collect_totals_before>
-                        <type>singleton</type>
-                        <class>meuprime_admin/observer</class>
-                        <method>shippingQuote</method>
-                    </meuprime_admin_sales_quote_address_collect_totals_before>
-                </observers>
-            </sales_quote_address_collect_totals_before>
-
-            <payment_method_is_active>
-                <observers>
-                    <meuprime_admin_payment_method_is_active>
-                        <type>singleton</type>
-                        <class>meuprime_admin/observer</class>
-                        <method>shippingQuote</method>
-                    </meuprime_admin_payment_method_is_active>
-                </observers>
-            </payment_method_is_active>
 
             <sales_order_save_after>
                 <observers>

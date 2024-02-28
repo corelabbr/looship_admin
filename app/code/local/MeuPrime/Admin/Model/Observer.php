@@ -73,8 +73,19 @@ class MeuPrime_Admin_Model_Observer
             "freights"  => $freights,
         );
 
-        $url = Mage::helper('meuprime_admin')->getHost() . '/v3/voucher/validate';
-        $newData = Mage::helper('meuprime_admin')->postRequest($url, $postData);
+        $total = $quote->getGrandTotal();
+        $cacheId = $voucher . $shippingOrigin . $destinationZipCode . $total;
+        if ($cache = Mage::app()->getCache()->load($cacheId))
+        {
+            $newData = unserialize($cache);
+        } 
+        else 
+        {
+            $url = Mage::helper('meuprime_admin')->getHost() . '/v3/voucher/validate';
+            $newData = Mage::helper('meuprime_admin')->postRequest($url, $postData);
+            Mage::app()->getCache()->save(serialize($newData), $cacheId, array("MEU_PRIME"), 10 * 60);
+        }
+
         if (isset($newData) && $newData['valid'] == true)
         {
             $newFreights = $newData['freights'];
