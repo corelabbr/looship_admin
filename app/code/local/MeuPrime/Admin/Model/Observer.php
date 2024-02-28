@@ -22,11 +22,23 @@ class MeuPrime_Admin_Model_Observer
         $loo_job_id = Mage::getSingleton('core/session')->getLoojobid();
         if (!isset($loo_job_id)) return;
         
-        $url = Mage::helper('meuprime_admin')->getHost() . '/v3/order/' . $loo_job_id . '/confirmed';
         $postData = array(
             "external_id" => $external_id,
         );
-        $newData = Mage::helper('meuprime_admin')->postRequest($url, $postData);
+
+        $total = $order->getGrandTotal();
+        $cacheId = 'order' . $voucher . $shippingOrigin . $destinationZipCode . $total;
+        if ($cache = Mage::app()->getCache()->load($cacheId))
+        {
+            $newData = unserialize($cache);
+        } 
+        else 
+        {
+            $url = Mage::helper('meuprime_admin')->getHost() . '/v3/order/' . $loo_job_id . '/confirmed';
+            $newData = Mage::helper('meuprime_admin')->postRequest($url, $postData);
+            Mage::app()->getCache()->save(serialize($newData), $cacheId, array("MEU_PRIME"), 10 * 60);
+        }
+
         if (isset($newData) && $newData['valid'] == true)
         {
             Mage::getSingleton('core/session')->unsLooJobId();
@@ -74,7 +86,7 @@ class MeuPrime_Admin_Model_Observer
         );
 
         $total = $quote->getGrandTotal();
-        $cacheId = $voucher . $shippingOrigin . $destinationZipCode . $total;
+        $cacheId = 'freight' . $voucher . $shippingOrigin . $destinationZipCode . $total;
         if ($cache = Mage::app()->getCache()->load($cacheId))
         {
             $newData = unserialize($cache);
